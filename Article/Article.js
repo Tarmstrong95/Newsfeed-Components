@@ -10,8 +10,15 @@ class Article {
     this.expandButton.textContent = "expand";
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener("click", () => this.expandArticle());
+    this.delBtn = this.domElement.querySelector(".delBtn");
+    this.delBtn.textContent = "x";
+    this.delBtn.addEventListener('click', () => {
+      this.remove();
+    });
   }
-
+remove(){
+  this.domElement.parentNode.removeChild(this.domElement); //this was hard to figure out
+}
   expandArticle() {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.domElement.classList.toggle("article-open");
@@ -27,14 +34,14 @@ class Article {
 */
 
 let articles = document.querySelectorAll(".article");
-articles.forEach(item => {
-  new Article(item);
+articles.forEach((item, i) => {
   let delBtn = document.createElement("span");
-  let txtNd = document.createTextNode("x");
-  delBtn.appendChild(txtNd);
   item.prepend(delBtn);
+  delBtn.className = "delBtn";
   delBtn.style.float = "right";
   delBtn.style.padding = "5px";
   delBtn.style.margin = "5px 0";
   delBtn.style.textAlign = "center";
+  delBtn.style.cursor = "pointer";
+  new Article(item);
 });
