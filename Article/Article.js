@@ -33,8 +33,43 @@ remove(){
 
 */
 
+const articleGen = (title, _date, msg)  => {
+  const parArt = document.querySelector('.articles');
+  const div = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const date = document.createElement('p');
+  const p = document.createElement('p');
+  const span = document.createElement('span');
+
+  div.className = "article";
+  date.className = "date";
+  span.className = "expandButton";
+
+  parArt.appendChild(div);
+  div.appendChild(h2);
+  div.appendChild(date);
+  div.appendChild(p);
+  div.appendChild(span);
+
+  h2.textContent = title;
+  date.textContent = _date;
+  p.textContent = msg;
+  }
+
+  let temptitle = "This is a new article!"
+  let tempMsg = "This is a new article message"
+// Invoke new articles here
+articleGen(temptitle, "April 10, 2019", tempMsg);
+
+
+
+
+
+
+
+
 let articles = document.querySelectorAll(".article");
-articles.forEach((item, i) => {
+articles.forEach((item) => {
   let delBtn = document.createElement("span");
   item.prepend(delBtn);
   delBtn.className = "delBtn";
