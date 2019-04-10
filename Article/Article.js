@@ -4,17 +4,17 @@ class Article {
   constructor(domElement) {
     // assign this.domElement to the passed in domElement
     this.domElement = domElement;
-    // create a reference to the ".expandButton" class. 
-    this.expandButton = this.domElement.querySelector('.expandButton');
+    // create a reference to the ".expandButton" class.
+    this.expandButton = this.domElement.querySelector(".expandButton");
     // Using your expandButton reference, update the text on your expandButton to say "expand"
     this.expandButton.textContent = "expand";
     // Set a click handler on the expandButton reference, calling the expandArticle method.
-    this.expandButton.addEventListener('click', () => (this.expandArticle()));
+    this.expandButton.addEventListener("click", () => this.expandArticle());
   }
 
   expandArticle() {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
-    this.domElement.classList.toggle('article-open');
+    this.domElement.classList.toggle("article-open");
   }
 }
 
@@ -26,7 +26,15 @@ class Article {
 
 */
 
-let articles = document.querySelectorAll('.article');
-articles.forEach( item => {
+let articles = document.querySelectorAll(".article");
+articles.forEach(item => {
   new Article(item);
-})
+  let delBtn = document.createElement("span");
+  let txtNd = document.createTextNode("x");
+  delBtn.appendChild(txtNd);
+  item.prepend(delBtn);
+  delBtn.style.float = "right";
+  delBtn.style.padding = "5px";
+  delBtn.style.margin = "5px 0";
+  delBtn.style.textAlign = "center";
+});
