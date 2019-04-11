@@ -13,9 +13,9 @@ menuButton.addEventListener("click", () => {
   event.stopPropagation();
 });
 
-menu.addEventListener('click', () => {
-  event.stopPropagation();
-})
+menu.addEventListener("click", () => {
+  event.stopPropagation(); // had to set this so menu doesnt close itself
+});
 document.addEventListener("click", () => {
   if (menu.classList.contains("menu--open")) {
     toggleMenu();
